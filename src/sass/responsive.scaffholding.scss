@@ -1,0 +1,61 @@
+@mixin do-scaffholding($scaffholding-margin, $scaffholding-margin-ie, $row-width, $fixed-margin, $fw)
+{
+	$n: 12;
+
+	$total-selectors: '';
+
+	//PRSPAN-x; Precise SPAN - multiplies $n by 10, but do not create all the prspans (to avoid size overweight)
+	// Only the spans that match specific ratios ( n/5, n/8, n/10) are created
+	// However, if you really need another size, it is possible to @extend them
+	@for $i from 1 to (10*$n)
+	{
+		//12th are built directly with the spans
+		$test12: ($i % (10*$n/12)) == 0;
+		$test10: ($i % (10*$n/10)) == 0; 
+		$test8 : ($i % (10*$n/8 )) == 0;
+		//$test5: ($i % (10*$n/5)) == 0;
+		//if $test10 matches, $test5 matches as well 
+	
+		@if ( ($test10==true or $test8==true or $test12 == true) )
+		{
+			@if ($fw=='bootstrap2' and ($test12 == false))
+			{
+				//On bootstrap v2, prspan equivalent to a span are ignored
+				.row-fluid .prspan#{$i}
+				{
+					$w: ($i/$n/10.0)*(100% - $scaffholding-margin*($n - 1)) + ($i - 10) * $scaffholding-margin/10.0;
+					width: $w;
+					*width: $w + $scaffholding-margin-ie - $scaffholding-margin;
+				}
+				.prspan#{$i}
+				{
+					$w: ($i/$n/10.0)*($row-width - $fixed-margin*($n - 1)) + ($i - 10) * $fixed-margin/10.0;
+					width: $w;
+				}
+			}
+			@if ($fw=='bootstrap3')
+			{
+				//On bootstrap v2, prspan equivalent to a span are taken to hnadle device sizes correctly 
+				$w: ($i/$n/10.0)*100%;
+				
+				$total-selectors: $total-selectors + ", .prcol-" + ($row-width) + "-" + $i;
+				.prcol-#{$row-width}-#{$i}
+				{
+					width: $w;
+				}
+			}
+		}
+	}
+
+	@if ($fw=='bootstrap3')
+	{
+		.prcol-md-10, #{$total-selectors}
+		{
+			float: left;
+			min-height: 1px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    position: relative;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+@import "compass/css3/box-sizing";
+@import "responsive.scaffholding";
+
+//To hack the Bootstrap3 system, we need to add a max-width checkto the @media directive
+
+@include do-scaffholding(0, 0, 'xs', 0, 'bootstrap3');
+@media (min-width: 768px)
+{
+	@include do-scaffholding(0, 0, 'sm', 0, 'bootstrap3');
+}
+@media (min-width: 992px)
+{
+	@include do-scaffholding(0, 0, 'md', 0, 'bootstrap3');
+}
+@media (min-width: 1170px)
+{
+	@include do-scaffholding(0, 0, 'lg', 0, 'bootstrap3');
+}

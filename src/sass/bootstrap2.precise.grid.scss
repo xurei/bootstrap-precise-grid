@@ -1,0 +1,20 @@
+@import "compass/css3/box-sizing";
+@import "responsive.scaffholding";
+
+@include do-scaffholding(2.127659574468085%, 2.074468085106383%, 940px, 20px, 'bootstrap2');
+@media (min-width: 768px) and (max-width: 979px) {
+	@include do-scaffholding(2.7624309392265194%, 2.709239449864817%, 724px, 20px, 'bootstrap2');
+}
+@media (min-width: 1200px) {
+	@include do-scaffholding(2.564102564102564%, 2.5109110747408616%, 1170px, 30px, 'bootstrap2');
+
+}
+@media (max-width: 767px)
+{
+	[class*="prspan"],
+  .uneditable-input[class*="prspan"],
+  .row-fluid [class*="prspan"] {
+    width: 100%;
+  }
+}
+

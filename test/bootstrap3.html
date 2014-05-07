@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Bootstrap 2 test</title>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../release/bootstrap3.precise.scaffholding.css" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<style>
+			[class*="col-"]
+			{
+				background: #aaa;
+				text-align: center;
+				line-height: 30px;
+				min-height: 30px;
+				border-right: solid 1px #000;
+			}
+			.w1200, .w1000, .w800, .w320
+			{
+				max-width: 1200px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			.w1000
+			{
+				max-width: 1000px;
+			}
+			.w800
+			{
+				max-width: 800px;
+			}
+			.w320
+			{
+				max-width: 320px;
+			}
+			.container-fluid, .container
+			{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="w1200">
+			<h1>Bootstrap 3 Precise Grid test</h1>
+			<h2>container-fluid</h2>
+			<div class="container-fluid">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+			</div>
+			<div class="container-fluid">
+				<div class="prcol-sm-24">prcol-sm-24</div>
+				<div class="col-sm-1"></div>
+				<div class="prcol-sm-36">prcol-md-36</div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+			</div>
+			<div class="container-fluid">
+				<div class="prcol-md-24 prcol-sm-36">prcol-md-24 prcol-sm-36</div>
+				<div class="col-sm-1"></div>
+				<div class="prcol-md-36 prcol-sm-12">prcol-md-36 prcol-sm-12</div>
+				<div class="prcol-md-10 prcol-sm-12">prcol-md-10 prcol-sm-12</div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+				<div class="col-md-1 col-sm-2">col-md-1 col-sm-2</div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div>
+			</div>
+		</div>
+	</body>
+</html>
