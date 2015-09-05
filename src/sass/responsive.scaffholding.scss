@@ -16,40 +16,47 @@
 		//$test5: ($i % (10*$n/5)) == 0;
 		//if $test10 matches, $test5 matches as well 
 	
-		@if ( ($test10==true or $test8==true or $test12 == true) )
+		@if ($fw=='bootstrap2' and ($test12 == false))
 		{
-			@if ($fw=='bootstrap2' and ($test12 == false))
+			@if ( ($test10==true or $test8==true or $test12 == true) )
 			{
 				//On bootstrap v2, prspan equivalent to a span are ignored
-				.row-fluid .prspan#{$i}
+				.row-fluid .span#{$i}-pr
 				{
 					$w: ($i/$n/10.0)*(100% - $scaffholding-margin*($n - 1)) + ($i - 10) * $scaffholding-margin/10.0;
 					width: $w;
 					*width: $w + $scaffholding-margin-ie - $scaffholding-margin;
 				}
-				.prspan#{$i}
+				.span#{$i}-pr
 				{
 					$w: ($i/$n/10.0)*($row-width - $fixed-margin*($n - 1)) + ($i - 10) * $fixed-margin/10.0;
 					width: $w;
 				}
 			}
-			@if ($fw=='bootstrap3')
+		}
+		@if ($fw=='bootstrap3')
+		{
+			//On bootstrap v3, columns equivalent to a span are taken to hnadle device sizes correctly 
+			$w: ($i/$n/10.0)*100%;
+			
+			$total-selectors: $total-selectors + ", .col-" + ($row-width) + "-" + $i+"-pr";
+			@if ( ($test10==true or $test8==true or $test12 == true) )
 			{
-				//On bootstrap v2, prspan equivalent to a span are taken to hnadle device sizes correctly 
-				$w: ($i/$n/10.0)*100%;
-				
-				$total-selectors: $total-selectors + ", .prcol-" + ($row-width) + "-" + $i;
-				.prcol-#{$row-width}-#{$i}
+				.col-#{$row-width}-#{$i}-pr
 				{
 					width: $w;
 				}
+			}
+			%col-#{$row-width}-#{$i}-pr
+			{
+				width: $w;
 			}
 		}
 	}
 
 	@if ($fw=='bootstrap3')
 	{
-		.prcol-md-10, #{$total-selectors}
+		.col-md-10-pr, #{$total-selectors}
 		{
 			float: left;
 			min-height: 1px;
@@ -59,3 +66,4 @@
 		}
 	}
 }
+
